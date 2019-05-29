@@ -119,21 +119,23 @@
 
 \section*{Introduction}
 
-\noindent White matter structure is important to normal brain function. Diffusion tensor imaging (DTI) measures the white matter \emph{in vivo} by fitting a diffusion ellipsoid in every voxel. One of the challenges of DTI is to make sense of the massive dimensionality of the data. One common approach is to reduce the dimensionality of each diffusion tensor to scalars such as mean diffusivity (MD) and fractional anisotropy (FA).
-\begin{Figure}
-    \centering
-    \includegraphics[width=0.5\linewidth, valign=m]{dti_inference.png}
-    \includegraphics[width=0.48\linewidth, valign=m]{dti_metrics.png}
-    \captionof{figure}{Diffusion Tensor Imaging. \textbf{left}: (\textbf{A}) Micrograph of human optic nerve next to cartoon of anisotropic water diffusion. (\textbf{B}) dMRI measurements in a single slice of human brain, shown as imaged with two different diffusion weighting directions (inset arrows). The image darkens where the weighting direction is aligned with the fascicles. \textbf{right}: Three primary estimates of white matter organization. MD measures mean diffusion in all directions. FA represents diffusion variability in different directions. The PDD is the direction of maximal diffusion in each voxel. (Rokem et al.~2017)}
-\end{Figure}
+\noindent Diffusion MRI (dMRI) is the only existing method to analyze human white matter \emph{in vivo}, but requires a pipeline of steps to preprocess the data, e.g.
+\begin{itemize}
+    \item eddy current correction,
+    \item motion correction,
+    \item adjustment of gradient direction.
+\end{itemize}
+Complexity and lack of standardization of these tasks can induce bias in subsequent interpretation of dMRI.
 
-\noindent Tractometry further reduces the dimensionality of this data by quantifying diffusion metrics along tract profiles.
+\\ \noindent {\Large Include figure from the ``pitfalls'' paper.} \\
 
-\begin{Figure}
-    \centering
-    \includegraphics[width=0.8\linewidth]{afq_pipeline.png}
-    \captionof{figure}{The preprocessing pipeline: Automated Fiber Quantification (AFQ) identifies fiber tracts, creating tract profiles of common diffusion metrics along canonical white matter tracts (from Yeatman et al.~2012).}
-\end{Figure}
+\noindent In the field of fMRI, the FMRIprep software (Esteban et al.~2018) has successfully standardized fMRI preprocessing pipelines to reduce errors and increase reproducibility. Inspired by this success, DMRIprep applies the overarching philosophy of FMRIprep to dMRI analysis. It is designed to be
+\begin{itemize}
+    \item robust,
+    \item reproducible,
+    \item interrogable,
+    \item scalable.
+\end{itemize}
 
 %----------------------------------------------------------------------------
 %	Methods
