@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% a0poster Landscape Poster
+% baposter Portrait Poster
 % LaTeX Template
-% Version 1.0 (22/06/13)
+% Version 1.0 (15/5/13)
 %
-% The a0poster class was created by:
-% Gerlinde Kettl and Matthias Weiser (tex@kettl.de)
+% Created by:
+% Brian Amberg (baposter@brian-amberg.de)
 %
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
@@ -14,34 +14,32 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%-------------------------------------------------------------------------------
+%----------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%-------------------------------------------------------------------------------
+%----------------------------------------------------------------------------
 
-\documentclass[a0, landscape]{a0poster}
+\documentclass[a0paper,portrait,fontscale=0.395]{baposter}
 
-\usepackage{multicol} % This is so we can have multiple columns of text side-by-side
-\columnsep=100pt % This is the amount of white space between the columns in the poster
-\columnseprule=3pt % This is the thickness of the black line between the columns in the poster
-
-\usepackage[svgnames]{xcolor} % Specify colors by their 'svgnames', for a full list of all colors available see here: http://www.latextemplates.com/svgnames-colors
-
-%\usepackage{times} % Use the times font
-% \usepackage{palatino} % Uncomment to use the Palatino font
-\usepackage{fontspec}
-\setmainfont{Latin Modern Sans}
-
-\usepackage{graphicx} % Required for including images
-\graphicspath{{figures/}} % Location of the graphics files
-\usepackage{booktabs} % Top and bottom rules for table
 \usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{enumitem} % To change spacing in itemize and enumerate lists
+\usepackage{multicol}
+\usepackage{relsize} % Used for making text smaller in some places
 \usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
 \usepackage{wrapfig} % Allows wrapping text around tables and figures
 \usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
-
-\usepackage{listings}
+\usepackage{palatino} % Uncomment to use the Palatino font
+\usepackage{graphicx} % Required for including images
 \usepackage{color}
 \usepackage{mathtools}
+
+\graphicspath{{figures/}} % Directory in which figures are stored
+
+\definecolor{bordercol}{RGB}{40,40,40} % Border color of content boxes
+\definecolor{headercol1}{RGB}{208,208,208} % Background color for the header in the content boxes (left side)
+\definecolor{headercol2}{RGB}{51,0,111} % Background color for the header in the content boxes (right side)
+\definecolor{headerfontcol}{RGB}{0,0,0} % Text color for the header text in the content boxes
+\definecolor{boxcolor}{RGB}{208,208,208} % Background color for the content in the content boxes
 
 \newenvironment{Figure}
   {\par\medskip\noindent\minipage{\linewidth}}
@@ -50,139 +48,123 @@
 \DeclarePairedDelimiterX{\norm}[1]{\lVert}{\rVert}{#1}
 \DeclareMathOperator{\Tr}{Tr}
 
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\lstset{
-  %frame=tb,
-  language=Python,
-  aboveskip=2mm,
-  belowskip=0mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3,
-  framexleftmargin=15pt
-  }
-
-
 \begin{document}
 
-%----------------------------------------------------------------------------------------
-%	POSTER HEADER
-%----------------------------------------------------------------------------------------
-
-% The header is divided into three boxes:
-% The first is 55% wide and houses the title, subtitle, names and university/organization
-% The second is 25% wide and houses contact information
-% The third is 19% wide and houses a logo for your university/organization or a photo of you
-% The widths of these boxes can be easily edited to accommodate your content as you see fit
-
-\begin{minipage}[b]{0.88\linewidth}
-\Large ~Poster W624\\
-
-\veryHuge \color{NavyBlue} \textbf{DMRIprep: a Robust, Scalable Preprocessing Pipeline for Diffusion MRI} \color{Black}\\ % Title
-%\Huge\textit{A really awesome subtitle}\\[1cm] % Subtitle
-\huge \textbf{Adam Richie-Halford\textsuperscript{1}, Jason Yeatman\textsuperscript{2}, Ariel Rokem\textsuperscript{1}, Anisha Keshavan\textsuperscript{3}}\\ % Author(s)
-\Large 1. University of Washington, 2. Stanford University, 3. Child Mind Institute \\ % University/organization
-\Large Contact: \texttt{richford@uw.edu}
-\end{minipage}
+\begin{poster}{
+grid=false,
+headerheight=0.075\textheight,
+borderColor=bordercol, % Border color of content boxes
+headerColorOne=headercol1, % Background color for the header in the content boxes (left side)
+headerColorTwo=headercol2, % Background color for the header in the content boxes (right side)
+headerFontColor=headerfontcol, % Text color for the header text in the content boxes
+boxColorOne=boxcolor, % Background color for the content in the content boxes
+headershape=roundedright, % Specify the rounded corner in the content box headers
+headerfont=\Large\sf\bf, % Font modifiers for the text in the content box headers
+textborder=rectangle,
+background=none,
+headerborder=open, % Change to closed for a line under the content box headers
+boxshade=plain
+}
+{}
 %
-%\begin{minipage}[b]{0.25\linewidth}
-%\color{DarkSlateGray}\Large \textbf{Contact Information:}\\
-%Department Name\\ % Address
-%University Name\\
-%123 Broadway, State, Country\\\\
-%Phone: +1 (000) 111 1111\\ % Phone number
-%Email: \texttt{john@LaTeXTemplates.com}\\ % Email address
-%\end{minipage}
+%----------------------------------------------------------------------------
+%	TITLE AND AUTHOR NAME
+%----------------------------------------------------------------------------
 %
-\begin{minipage}[b]{0.19\linewidth}
-\includegraphics[width=10cm]{UWlogo.png}
-\end{minipage}
-
-\vspace{0.5cm} % A bit of extra whitespace between the header and poster content
-
-%----------------------------------------------------------------------------------------
-
-\begin{multicols}{3} % This is how many columns your poster will be broken into, a poster with many figures may benefit from less columns whereas a text-heavy poster benefits from more
+{\sf\bf DMRIprep: a Robust, Scalable Preprocessing Pipeline for diffusion MRI} % Poster title
+{\vspace{0.5em} Adam Richie-Halford\textsuperscript{1}, Jason Yeatman\textsuperscript{2}, Ariel Rokem\textsuperscript{1}, Anisha Keshavan\textsuperscript{3} \hfill Poster W624 \hspace{0.5em}\null \\ % Author names
+{\smaller 1. University of Washington, 2. Stanford University, 3. Child Mind Institute \hfill Contact: richford@uw.edu \hspace{0.5em}\null}} % Author email addresses
+{\includegraphics[scale=0.12]{UWlogo.png}} % University/lab logo
 
 %----------------------------------------------------------------------------
-%	Introduction
+%	INTRODUCTION
 %----------------------------------------------------------------------------
 
-\section*{Introduction}
+\headerbox{Introduction}{name=introduction,column=0,row=0}{
 
 \noindent Diffusion MRI (dMRI) is the only existing method to analyze human white matter \emph{in vivo}, but requires a pipeline of steps to preprocess the data, e.g.
-\begin{itemize}
+\begin{itemize}[noitemsep]
     \item eddy current correction,
     \item motion correction,
-    \item adjustment of gradient direction.
+    \item gradient direction adjustment.
 \end{itemize}
-Complexity and lack of standardization of these tasks can induce bias in subsequent interpretation of dMRI.
+\textbf{\underline{Challenge}: Complexity and lack of standardization of preprocessing can induce bias in interpretation of dMRI.}
+\begin{Figure}
+    \centering
+    \includegraphics[height=0.45\linewidth, frame]{pitfalls_eddy_current.jpg}
+    \includegraphics[height=0.45\linewidth, frame]{pitfalls_axis_flip.png}
+    \includegraphics[width=0.7\linewidth, frame]{pitfalls_orient_bvector.jpg}
+    \captionof{figure}{\textbf{top left}: eddy current artifacts\cite{jones2010twenty}, \textbf{top right}: consequence of gradient table flip artifact\cite{aganj2018automatic}, \textbf{bottom}: effects of not reorienting the $\mathbf{b}$-matrix when correcting for motion\cite{leemans2009b}.}
+\end{Figure}
 
-\\ \noindent {\Large Include figure from the ``pitfalls'' paper.} \\
-
-\noindent In the field of fMRI, the FMRIprep software (Esteban et al.~2018) has successfully standardized fMRI preprocessing pipelines to reduce errors and increase reproducibility. Inspired by this success, DMRIprep applies the overarching philosophy of FMRIprep to dMRI analysis. It is designed to be
-\begin{itemize}
+\noindent In the related field of fMRI, the FMRIprep software\cite{esteban2019fmriprep} successfully standardized preprocessing to reduce errors and increase reproducibility. Inspired by this success, DMRIprep applies the philosophy of FMRIprep to dMRI analysis. It is designed to be
+\vspace{-0.5em}
+\begin{multicols}{2}
+\begin{itemize}[nosep]
     \item robust,
     \item reproducible,
     \item interrogable,
     \item scalable.
 \end{itemize}
+\end{multicols}
+}
 
 %----------------------------------------------------------------------------
-%	Methods
+%	METHODS
 %----------------------------------------------------------------------------
 
-\section*{Methods}
+\headerbox{Methods}{name=methods,column=0,below=introduction}{
 
-\noindent DMRIprep is implemented as a nipype (Gorgolewski et al.~2011) workflow including
-\begin{itemize}
+\noindent DMRIprep is implemented as a nipype\cite{gorgolewski2016brain} workflow including
+\begin{itemize}[noitemsep, leftmargin=*]
     \item eddy current correction using FSL,
     \item coregistration to a T1W image with Freesurfer,
-    \item the production of QC reports using
-        \begin{itemize}
-            \item FSL's EDDY QC framework (Bastiani et al.~2019),
-            \item DIPY (Garyfallidis et al.~2014),
-        \end{itemize}
+    \item production of QC reports using EDDY QC\cite{bastiani2019automated} and DIPY\cite{garyfallidis2014dipy}
     \item a custom interactive report website.
 \end{itemize}
-
+\vspace{-0.5em}
 \begin{Figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{dmriprep_workflow.pdf}
-    \captionof{figure}{The DMRIprep workflow: given input dMRI data and (optional) EPI field maps, FSL's topup and eddy programs correct for distortions, subject movement, and eddy currents. DMRIprep removes volumes that exceed a user-defined threshold for the number of outlier slices. Eddy Quad operates on the output of eddy to generate QC reports, which are organized into an interactive report webpage (see Figure 2). Dipy computes the diffusion tensor images of the corrected dMRI data. Separately, the input structural images are registered to the dMRI data and resampled to DWI resolution using Freesurfer. The preprocessed T1w and dMRI data are organized in BIDS format for further dMRI analysis.}
+    \includegraphics[width=0.82\linewidth]{dmriprep_workflow.pdf}
+    \captionof{figure}{DMRIprep workflow: given input dMRI data and optional EPI field maps, FSL's \texttt{topup} and \texttt{eddy} correct for distortions, motion, and eddy currents. DMRIprep removes volumes that exceed a user-defined threshold for outlier slices. \texttt{eddy\_quad} generates QC reports, which are organized into an interactive report webpage. DIPY computes the diffusion tensor images of the corrected data. Separately, the input structural images are registered to the dMRI data and resampled to DWI resolution. Output is organized in BIDS format for further analysis.}
 \end{Figure}
 
-\vfill
-\columnbreak
-
 \noindent All DMRIprep dependencies are packaged into a Docker image with three command line tools:
-\begin{itemize}
+\begin{itemize}[noitemsep, leftmargin=*]
     \item \texttt{dmriprep}: a BIDS-App compliant tool that runs the primary workflow,
     \item \texttt{dmriprep-data}: a tool to download data from public datasets and transform the files to BIDS-format,
     \item \texttt{dmriprep-upload}: a tool to upload DMRIprep results to an Amazon Web Services (AWS) S3 bucket.
 \end{itemize}
-
-\color{Navy}
+}
 
 %----------------------------------------------------------------------------
-%	RESULTS
+%	CONCLUSION
 %----------------------------------------------------------------------------
 
-\section*{Results}
+\headerbox{Conclusion}{name=conclusion,column=0,below=methods,above=bottom}{
 
-\noindent We tested DMRIprep by analyzing the Healthy Brain Network (HBN; Alexander et al.~2017) dataset.
-\begin{itemize}
+\begin{itemize}[nosep, leftmargin=*]
+    \item DMRIprep implements
+    \begin{itemize}[nosep, leftmargin=*]
+        \item a nipype pipeline for preprocessing of dMRI data,
+        \item web-based visualizations for quality control of results,
+        \item a BIDS-App compliant command-line interface to download, preprocess, and upload large dMRI datasets.
+    \end{itemize}
+
+    \item Robust, scalable preprocessing pipeline for many different experimental settings.
+    \item Improves consistency and reproducibility of analysis procedures and methods reporting.
+    \item Open source: \texttt{https://github.com/nipy/dmriprep}
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------
+%	RESULTS 1
+%----------------------------------------------------------------------------
+
+\headerbox{Results}{name=results1,span=2,column=1,row=0}{ % To reduce this block to 1 column width, remove 'span=2'
+
+\noindent We tested DMRIprep by analyzing the Healthy Brain Network\cite{alexander2017open} (HBN) dataset.
+\begin{itemize}[noitemsep]
     \item 60 subjects from three different sites (``Site-SI'', ``Site-RU'', ``Site-CBIC'')
     \item BIDS compliant (mostly)
     \item DMRIprep was able to accommodate slight irregularities in each site's file structure and format.
@@ -191,69 +173,63 @@ Complexity and lack of standardization of these tasks can induce bias in subsequ
 
 \begin{Figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{qc_report.png}
-    \captionof{figure}{\color{Navy} An example DMRIprep QC report, generated with DMRIprep-viewer. From top to bottom, it displays: (1) group comparisons for relative and absolute motion; (2) a view of the eddy current-corrected DWI volumes; (3) a report of the outlier volumes and slices; (4) a view of the registration mask, mapped onto the B0 DWI images; and (5) a DTI map showing fractional anisotropy mapped onto the B0 image.}
+    \includegraphics[width=0.87\linewidth]{qc_report.png}
+    \captionof{figure}{An example DMRIprep QC report, generated with DMRIprep-viewer. From top to bottom, it displays: (1) group comparisons for relative and absolute motion; (2) a view of the eddy current-corrected DWI volumes; (3) a report of the outlier volumes and slices; (4) a view of the registration mask, mapped onto the B0 DWI images; and (5) a DTI map showing fractional anisotropy mapped onto the B0 image.}
 \end{Figure}
 
-\vfill
-\columnbreak
-
-\begin{minipage}[b]{0.45\linewidth}
-\begin{Figure}
-    \centering
-    \includegraphics[width=0.5\linewidth]{dmriprep_qc_dynamic_qr.png}\\
-    \color{Navy} \textbf{Interactive QC report}
-\end{Figure}
-\end{minipage}
-\begin{minipage}[b]{0.45\linewidth}
-\begin{Figure}
-    \centering
-    \includegraphics[width=0.5\linewidth]{dmriprep_github_dynamic_qr.png}\\
-    \color{Navy} \textbf{GitHub repository}
-\end{Figure}
-\end{minipage}
-
-\begin{itemize}
+\begin{minipage}[c]{0.6\linewidth}
+\begin{itemize}[noitemsep]
     \item Preprocessing failed gracefully on two of the 60 subjects due to data acquisition errors (the b-values and b-vectors did not match the total number of volumes in the image).
     \item Running 60 subjects on Google Cloud Platform (GCP) using Kubernetes cost 51~USD in total, approximately 0.85~USD per subject (using an n1-highmem-4 machine with 26GB RAM and 4 vCPUs.
 \end{itemize}
-
-\color{SaddleBrown} % SaddleBrown color for the conclusions to make them stand out
-
-\section*{Conclusions}
-
-\begin{itemize}
-    \item DMRIprep implements
-    \begin{itemize}
-        \item a nipype pipeline for preprocessing of dMRI data,
-        \item web-based visualizations for quality control of results,
-        \item a BIDS-App compliant command-line interface to download, preprocess, and upload large dMRI datasets.
-    \end{itemize}
-
-    \item Robust, scalable preprocessing pipeline for many different experimental settings.
-    \item Improves consistency and reproducibility of analysis procedures and methods reporting.
-    \item Packaged as open-source software: \texttt{https://github.com/nipy/dmriprep}
-\end{itemize}
-
-\color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
+\end{minipage}
+\begin{minipage}[c]{0.4\linewidth}
+    \centering
+    \null\hfill
+    \begin{minipage}[t]{0.285\linewidth}
+    \centering
+    \includegraphics[height=\linewidth, valign=c]{dmriprep_qc_dynamic_qr.png}
+    \textbf{Interactive QC}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.285\linewidth}
+    \centering
+    \includegraphics[height=\linewidth, valign=c]{dmriprep_github_dynamic_qr.png}
+    \textbf{GitHub Repo}
+    \end{minipage}
+    \hfill\null
+\end{minipage}
+}
 
 %----------------------------------------------------------------------------
 %   REFERENCES
 %----------------------------------------------------------------------------
 
-\nocite{*} % Print all references regardless of whether they were cited in the poster or not
-\bibliographystyle{plain} % Plain referencing style
-\footnotesize \bibliography{poster} % Use the example bibliography file sample.bib
+\headerbox{References}{name=references,span=2,column=1,below=results1}{
+
+\begin{multicols}{2}
+\smaller \smaller % Reduce the font size in this block
+\renewcommand{\section}[2]{\vskip 0.05em} % Get rid of the default "References" section title
+\nocite{*} % Insert publications even if they are not cited in the poster
+
+\bibliographystyle{unsrt}
+\bibliography{poster}
+\end{multicols}
+}
 
 %----------------------------------------------------------------------------
 %	ACKNOWLEDGEMENTS
 %----------------------------------------------------------------------------
-\subsection*{Acknowledgements} \footnotesize
 
-\includegraphics[height=2.6cm]{SloanLogo.png}
-\includegraphics[height=2.6cm]{MooreFdn.png}
-\includegraphics[height=2.6cm]{eSciencelogo.png}
-%----------------------------------------------------------------------------
+\headerbox{Acknowledgements}{name=acknowledgements,column=1,span=2,below=references,above=bottom}{
 
-\end{multicols}
+\smaller % Reduce the font size in this block
+\includegraphics[height=0.88cm]{SloanLogo.png}
+\includegraphics[height=0.88cm]{MooreFdn.png}
+\includegraphics[height=0.88cm]{eSciencelogo.png}
+} 
+
+
+\end{poster}
+
 \end{document}
