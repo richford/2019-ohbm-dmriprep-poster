@@ -115,12 +115,12 @@ boxshade=plain
 
 \headerbox{Methods}{name=methods,column=0,below=introduction}{
 
-\noindent DMRIprep is implemented as a nipype\cite{gorgolewski2016brain} workflow including
+\noindent DMRIprep is implemented as a nipype\cite{gorgolewski2016brain} workflow including:
 \begin{itemize}[noitemsep, leftmargin=*]
-    \item eddy current correction using FSL,
-    \item coregistration to a T1W image with Freesurfer,
-    \item production of QC reports using EDDY QC\cite{bastiani2019automated} and DIPY\cite{garyfallidis2014dipy}
-    \item a custom interactive report website.
+    \item Eddy current correction using FSL.
+    \item Coregistration to a T1W image with Freesurfer.
+    \item Production of QC reports using EDDY QC\cite{bastiani2019automated} and DIPY\cite{garyfallidis2014dipy}.
+    \item A custom interactive report website.
 \end{itemize}
 \vspace{-0.5em}
 \begin{Figure}
@@ -180,7 +180,7 @@ boxshade=plain
 \begin{minipage}[c]{0.6\linewidth}
 \begin{itemize}[noitemsep]
     \item Preprocessing failed gracefully on two of the 60 subjects due to data acquisition errors (the b-values and b-vectors did not match the total number of volumes in the image).
-    \item Running 60 subjects on Google Cloud Platform (GCP) using Kubernetes cost 51~USD in total, approximately 0.85~USD per subject (using an n1-highmem-4 machine with 26GB RAM and 4 vCPUs.
+    \item Running 60 subjects on Google Cloud Platform (GCP) using Kubernetes cost 51~USD in total, approximately 0.85~USD per subject (using an n1-highmem-4 machine with 26 GB of RAM and 4 vCPUs).
 \end{itemize}
 \end{minipage}
 \begin{minipage}[c]{0.4\linewidth}
@@ -227,7 +227,7 @@ boxshade=plain
 \includegraphics[height=0.88cm]{SloanLogo.png}
 \includegraphics[height=0.88cm]{MooreFdn.png}
 \includegraphics[height=0.88cm]{eSciencelogo.png}
-} 
+}
 
 
 \end{poster}
